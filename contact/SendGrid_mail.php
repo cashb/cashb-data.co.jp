@@ -319,6 +319,7 @@ else if($confirmDsp == 1){
 
         <nav>
             <div>
+                <a href="/service" class="text-decoration-none">サービス</a>
                 <a href="/business" class="text-decoration-none">事業案内</a>
                 <a href="/about" class="text-decoration-none">企業情報</a>
                 <a href="/news" class="text-decoration-none">最新情報</a>
@@ -333,6 +334,7 @@ else if($confirmDsp == 1){
 
         <ul>
             <li><a href="/" class="text-decoration-none">トップページ</a></li>
+            <li><a href="/service" class="text-decoration-none">サービス</a></li>
             <li><a href="/business" class="text-decoration-none">事業案内</a></li>
             <li><a href="/about" class="text-decoration-none">企業情報</a></li>
             <li><a href="/news" class="text-decoration-none">最新情報</a></li>
@@ -394,6 +396,7 @@ else if($confirmDsp == 1){
         </div>
         <div class="right">
             <nav>
+                <a href="/service/" class="text-decoration-none">サービス</a>
                 <a href="/business/" class="text-decoration-none">事業案内</a>
                 <a href="/about/" class="text-decoration-none">企業情報</a>
                 <a href="/news/" class="text-decoration-none">最新情報</a><br>
