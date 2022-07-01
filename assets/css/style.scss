@@ -1,0 +1,1871 @@
+/*
+Theme Name: キャッシュビー_コーポレート
+Theme URL: 
+Description: キャッシュビーのコーポレートサイト
+Author: KOZAKIKAKU
+Version: β
+Tags: cashb,キャッシュビー,
+License: 
+License URI: 
+*/
+
+html, body, h1, h2, h3, h4, ul, ol, dl, li, dt, dd, p, div, span, img, a, table, tr, th, td {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-weight: normal;
+    font-size: 100%;
+    vertical-align:baseline;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+article, header, footer, aside, figure, figcaption, nav, section { 
+    display:block;
+}
+
+body {
+    line-height: 1;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    font-family:'Noto Sans JP',-apple-system,BlinkMacSystemFont,"Helvetica Neue",YuGothic,YuGothicM,"Hiragino Kaku Gothic ProN",sans-serif;
+    letter-spacing:2px;
+}
+ 
+ol, ul {
+    list-style: none;
+    list-style-type: none;
+}
+
+svg{
+    width:auto;
+    height:auto;
+}
+
+/*****************************************
+******************mixin*******************
+******************************************/
+
+$pc: 1181px;
+$tb: 1180px;
+$sp: 984px;
+//$main:#414881;
+$main:#353535;
+$main2:#8E8E8E;
+$back:#FAFAFA;
+$gray:#717171;
+//$filter:rgba(50,35,111,0.44);
+$filter:rgba(0,0,0,0.44);
+$fw100:100;
+
+    
+@mixin pc {
+    @media (min-width: ($pc)) {
+        @content;
+    }
+}
+
+@mixin tb {
+    @media (max-width: ($tb)) {
+        @content;
+    }
+}
+
+@mixin sp {
+    @media (max-width: ($sp)) {
+        @content;
+    }
+}
+
+@mixin fade($sc: .2s){
+    -webkit-transition: $sc ease-in-out;
+    transition: $sc ease-in-out;
+}
+
+@mixin flex{
+    display:flex;
+    @include fade;
+}
+
+@mixin fo_clm{
+    flex-flow:column;
+}
+
+@mixin fo_sb{
+    justify-content:space-between;
+}
+
+@mixin fo_sa{
+    justify-content:space-around;
+}
+
+@mixin fo_hc{
+    justify-content:center;
+}
+
+@mixin fo_vc{
+    align-items:center;
+}
+
+@mixin fo_t{
+flex-wrap: wrap;
+}
+
+@mixin abs($top: auto, $right: auto, $bottom: auto, $left: auto) {
+    position:absolute;
+    top: $top;
+    right: $right;
+    bottom: $bottom;
+    left: $left;
+}
+
+//content_padding
+@mixin cp($top:90px, $right:0px, $bottom:0px, $left:0px){
+    padding:$top $right $bottom $left;
+}
+
+@mixin mt($num:45px){
+    margin-top:$num;
+    @include sp{
+        margin-top:($num /1.2);
+    }
+}
+
+@mixin mr($num:45px){
+    margin-right:$num;
+}
+
+@mixin mb($num:45px){
+    margin-bottom:$num;
+}
+
+@mixin ml($num:45px){
+    margin-left:$num;
+}
+
+@mixin pt($num:45px){
+    padding-top:$num;
+    @include sp{
+        padding-top:($num /1.2);
+    }
+}
+
+@mixin pr($num:45px){
+    padding-right:$num;
+}
+
+@mixin pb($num:45px){
+    padding-bottom:$num;
+    @include sp{
+        padding-bottom:($num /1.2);
+    }
+}
+
+@mixin pl($num:45px){
+    padding-left:$num;
+}
+
+@mixin pointer{
+    cursor: pointer;
+}
+
+@mixin wrap($num:$pc){
+    max-width:$num;
+    width:100%;
+    height:auto;
+    margin:0px auto;
+    position:relative;
+    @include tb{
+	    width:90%;
+	    //height:auto;
+        
+	}
+	@include sp{
+	    width:94%;
+	    //height:auto;
+	}
+}
+
+@mixin lh($line-height) {
+    line-height:$line-height;
+    &:before {
+    display: block;
+    width: 0;
+    height: 0;
+    margin-top: calc((1 - #{$line-height}) * .5em);
+    content: "";
+    }
+    &:after {
+    display: block;
+    width: 0;
+    height: 0;
+    margin-bottom: calc((1 - #{$line-height}) * .5em);
+    content: "";
+    }
+}
+
+@mixin text($num:14px,$num2:auto){
+    font-size:$num;
+    font-family:'Noto Sans JP';
+    font-weight:300;
+    width:$num2;
+    letter-spacing:2px;
+    @include lh(2);
+    color:$main;
+    @include tb{
+        font-size:1.2vw;
+    }
+    @include sp{
+        font-size:12px;
+    }
+}
+
+@mixin title{
+    font-size:40px;
+    letter-spacing:6px;
+    font-family: 'Arial';
+    font-weight:800;
+    text-align:center;
+    color:$main;
+    @include tb{
+        font-size:3vw;
+    }
+    @include sp{
+        font-size:28px;
+    }
+    span{
+        display:block;
+        font-family:'Noto Sans JP';
+        font-size:14px;
+        font-weight:300;
+        margin-top:10px;
+        color:rgba(0,0,0,0.8);
+        &:before{
+            content:"-";
+        }
+        &:after{
+            content:"-";
+        }
+        @include tb{
+            font-size:1vw;
+        }
+        @include tb{
+            font-size:14px;
+        }
+    }
+}
+
+@mixin title2{
+    font-size:18px;
+    font-weight:400;
+    @include tb{
+        font-size:1.4vw;
+    }
+    @include sp{
+        font-size:14px;
+    }
+}
+
+@mixin sub_title{
+    font-size:24px;
+    //font-family: 'M PLUS Rounded 1c', sans-serif;
+    font-weight:500;
+    text-align:center;
+    color:$main;
+    position:relative;
+    padding-bottom:14px;
+    &:before{
+        content:"";
+        width:100px;
+        height:2px;
+        @include abs(34px,0,0,0);
+        margin:auto;
+        border-top:2px solid rgba(0,0,0,0.2);
+    }
+    @include tb{
+        font-size:1.4vw;
+    }
+    @include sp{
+        font-size:14px;
+    }
+}
+
+@mixin list{
+    width:750px;
+    margin:0px auto;
+    @include tb{
+        max-width:750px;
+        width:100%;
+    }
+    @include sp{
+        width:100%;
+    }
+    a{
+        &:last-of-type{
+            li{
+                border-bottom:1px solid rgba(0,0,0,0.6);
+            }
+        }
+        li{
+            color:rgba(0,0,0,0.6);
+            font-weight:300;
+            border-top:1px solid rgba(0,0,0,0.6);
+            @include pt(16px);
+            @include pb(16px);
+            @include pr(16px);
+            @include pl(16px);
+            @include flex;
+            @include fo_sb;
+            @include fo_vc;
+            @include sp{
+                display:block;
+            }
+            span{
+                color:rgba(0,0,0,0.6);
+                //@include pr(40px);
+                font-size:16px;
+                line-height:26px!important;
+                @include tb{
+                    font-size:1.2vw;
+                    line-height:2vw!important;
+                }
+                @include sp{
+                    font-size:12px;
+                    line-height:20px!important;
+                }
+                &:first-of-type{
+                    width:20%;
+                    @include sp{
+                        display:inline-block;
+                        width:auto;
+                        @include mb(10px);
+                        font-weight:600;
+                        background:$main;
+                        padding:5px;
+                        color:white;
+                        border-radius:2px;
+                    }
+                }
+                &:last-of-type{
+                    width:80%;
+                }
+            }
+        }
+    }
+}
+
+@mixin btn($num:180px){
+    display:block;
+    margin:0px auto;
+    width:$num;
+    background:$main;
+    color:white;
+    padding: 11px 19px;
+    border-radius: 30px;
+    font-size:14px;
+    text-align:center;
+    background-image: linear-gradient(to left, white 50%, $main 50%);
+    background-position: 0 0;
+    background-size: 200% auto;
+    transition: .4s!important;
+    transition-timing-function : ease-in-out;
+    border:1px solid $main;
+    &:hover{
+        background-position: 100% 0;
+        color:$main;
+        border:1px solid $main;
+        font-weight:700;
+        font-size:14.2px;
+    }
+    @include tb{
+        width:14vw;
+        font-size:1vw;
+        &:hover{
+            font-size:1.04vw!important;
+        }
+    }
+    @include sp{
+        width:160px;
+        font-size:12px;
+        &:hover{
+            font-size:12.5px!important;
+        }
+    }
+}
+
+@mixin round_box($num:20px){
+    background:white;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.4);
+    @include pt($num);
+    @include pr($num);
+    @include pb($num);
+    @include pl($num);
+    border-radius:6px;
+}
+
+@mixin round_box2($num:20px){
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.4);
+    @include pt($num);
+    @include pr($num);
+    @include pb($num);
+    @include pl($num);
+    border-radius:6px;
+}
+
+@mixin msg{
+    @include text(30px);
+    text-align:center;
+    font-weight:500;
+    color:$main;
+    @include tb{
+        font-size:2.4vw;
+    }
+    @include sp{
+        font-size:20px;
+    }
+}
+
+/*****************************************
+******************mixin*******************
+******************************************/
+
+.pc{
+	@include pc{
+	display:block;
+	}
+
+	@include tb{
+	display:none;
+	}
+	
+	@include sp{
+	display:none;
+	}
+}
+
+.tb{
+	@include pc{
+	display:none;
+	}
+
+	@include tb{
+	display:block;
+	}
+	
+	@include sp{
+	display:block;
+	}
+}
+
+.sp{
+	@include pc{
+	display:none;
+	}
+
+	@include tb{
+	display:none;
+	}
+	
+	@include sp{
+	display:block;
+	}
+}
+
+/*sp用メニュー*/
+.sp_menu{
+    display:block;
+    position: fixed;
+    z-index: 3;
+    top: 0;
+    left: 0;
+    color: black;
+    text-align: center;
+    transform: translateX(100%);
+    transition: all 0.6s;
+    width: 100%;
+    background:$main;
+    ul{
+        padding: 0;
+        width: 100%;
+        @include pt(30px);
+        li{
+            width:80%;
+            margin:0px auto;
+            //font-size: 0.7em;
+            text-align:left;
+            list-style-type: none;
+            border-bottom:1px solid white;
+            padding: 0;
+            //background:red;
+            &:last-child{
+                padding-bottom: 0;
+                border-bottom: none;
+                a{
+                    position:relative;
+                    display:inline-block;
+                }
+            }
+            a{
+                display: block;
+                color: white;
+                padding: 14px 0px;
+                margin:0;
+                //background:green;
+                font-size:14px;
+            }
+ 
+        }/*li_end*/
+    }/*ul_end*/
+    .bnr_box{
+        width:90%;
+        margin:0px auto;
+        @include mt(20px);
+        @include mb(30px);
+        @include flex;
+        @include fo_sa;
+        .btn{
+            @include btn;
+            background:white;
+            color:$main;
+        }
+    }
+}/*.sp_menu_end*/
+
+.navToggle{
+    //display: block;
+    position: fixed;    /* bodyに対しての絶対位置指定 */
+    top:0;
+    right:0;
+    margin:auto;
+    width: 70px;
+    height: 70px;
+    cursor: pointer;
+    z-index: 999;
+    background:$main;
+    text-align: center;
+    @include pc{
+        display:none;
+    }
+    @include tb{
+        display:none;
+    }
+    @include sp{
+        display:block;
+    }
+    span{
+        display:block;
+        width: 36px;
+        border-bottom: solid 2px white;
+        -webkit-transition: .35s ease-in-out;
+        -moz-transition: .35s ease-in-out;
+        transition: .35s ease-in-out;
+        @include abs(auto,0px,auto,0px);
+        margin:auto;
+        &:nth-child(1){
+            top: 20px;
+        }
+        &:nth-child(2){
+            top: 28px;
+        }
+        &:nth-child(3){
+            top: 36px;
+        }
+        &:nth-child(4){
+            border: none;
+            font-family: "qMmpS Pro W3","Hiragino Kaku Gothic Pro","CI","Meiryo",verdana,Osaka,"lr oSVbN","MS PGothic",Sans-Serif;
+            font-weight:bold;
+            color:white;
+            font-size:10px;
+            text-align:center;
+            letter-spacing:1px;
+            top: 46px;
+        }
+    }
+}/*.navToggle_end*/
+
+.sp_menu.active {
+    transform: translateX(0%);
+}
+
+.navToggle.active{
+    background:none;
+}
+
+.navToggle.active span{
+    //color:$main;
+    &:nth-child(1){
+        top: 38.3px;
+        left: 0px;
+        -webkit-transform: rotate(-45deg);
+        -moz-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+        border-bottom: solid 2px white;
+    }
+    &:nth-child(2),&:nth-child(3){
+        top: 38.3px;
+        right: 0px;
+        -webkit-transform: rotate(45deg);
+        -moz-transform: rotate(45deg);
+        transform: rotate(45deg);
+        border-bottom: solid 2px white;
+    }
+    &:nth-child(4){
+        display:none;
+    }
+}
+
+/*sp用メニュー_End*/
+
+img{
+display:block;
+}
+
+a{
+    color:black;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.parallax{
+    width: 100%;
+    height:auto;
+    background: url(img/bg.png);
+    background-repeat: no-repeat;
+    background-size:60%;
+    background-position: center top;
+    transition-property: background-position;
+    transition-duration: .1s;
+    transition-delay: .001s;
+}
+
+.pagination_cover{
+@include flex;
+@include fo_vc;
+margin-top:40px;
+	@include sp{
+	margin-top:16px;
+	}
+	.pagination{
+	margin:0px auto;
+		.current{
+		background:$main;
+		color:white;
+		border:1px solid $main;
+		}
+		a{
+			&:hover{
+			color:$main;
+			}
+		}
+		.page-numbers{
+		border-radius:2px;
+		border:1px solid rgba(0,0,0,0.1);
+		padding:6px 10px;
+		}
+	}
+}
+
+.fadein {
+	opacity : 0.06;
+	transform : translate(0, 50px);
+	transition : all 900ms!important;
+}
+
+.fadein2 {
+	opacity : 0.06;
+	transition : all 900ms;
+}
+
+/* 画面内に入った状態 */
+.fadein.scrollin {
+	opacity : 1;
+	transform : translate(0, 0);
+}
+
+.fadein2.scrollin2 {
+	opacity : 1;
+}
+
+.fadetext{
+    opacity:0;
+    span{
+        opacity:0;
+        font-weight:500!important;
+    }
+}
+
+
+/* 画面内に入った状態 */
+.fadein.scrollin {
+	opacity : 1;
+	transform : translate(0, 0);
+}
+
+.sd{
+    /*描画位置※位置は適宜調整してください*/
+    width:40px;
+    background:gray;
+	@include abs(auto,0px,10px,auto);
+    margin:auto;
+    z-index:30;
+    span{
+        /*描画位置*/
+        position: absolute;
+        left:12px;
+        top:-120px;
+        /*テキストの形状*/
+        color:white;
+        font-size: 14px;
+        letter-spacing:4px;
+        /*縦書き設定*/
+        -ms-writing-mode: tb-rl;
+        -webkit-writing-mode: vertical-rl;
+        writing-mode: vertical-rl;
+    }
+    &:before{
+        content: "";
+        /*描画位置*/
+        position: absolute;
+        bottom:0;
+        left:-4px;
+        /*丸の形状*/
+        width:10px;
+        height:10px;
+        border-radius: 50%;
+        background:#eee;
+        /*丸の動き1.6秒かけて透過し、永遠にループ*/
+        animation:circlemove 1.6s ease-in-out infinite,cirlemovehide 1.6s ease-out infinite;
+    }
+    &:after{
+        content:"";
+        /*描画位置*/
+        position: absolute;
+        bottom:0;
+        left:0;
+        /*線の形状*/
+        width:1px;
+        height: 120px;
+        background:white;
+    }
+    @keyframes circlemove{
+        0%{bottom:115px;}
+        100%{bottom:-5px;}
+    }
+
+    /*上から下にかけて丸が透過→不透明→透過する*/
+    @keyframes cirlemovehide{
+        0%{opacity:0}
+        50%{opacity:1;}
+        80%{opacity:0.9;}
+        100%{opacity:0;}
+    }
+}
+
+
+/***ここから共通部分**********************************************/
+body{
+
+}
+
+header{
+    width:100%;
+    height:auto;
+    background:white;
+    //border-bottom:1px solid gray;
+    position:fixed;
+    z-index:9999;
+    .wrap{
+        width:98%;
+        height:70px;
+        margin:0px auto;
+        @include flex;
+        @include fo_vc;
+        @include fo_sb;
+        @include sp{
+            width:94%;
+        }
+        .logo{
+            width:220px;
+            height:auto;
+            @include sp{
+                width:180px;
+            }
+        }
+        nav{
+            width:700px;
+            @include flex;
+            @include fo_vc;
+            @include fo_sb;
+            @include tb{
+                width:60vw;
+            }
+            @include sp{
+                display:none;
+            }
+            div{
+                &:first-child{
+                    width:300px;
+                    @include flex;
+                    @include fo_sb;
+                    @include tb{
+                        width:25vw;
+                    }
+                    a{
+                        font-size:14px;
+                        color:rgba(0,0,0,0.8);
+                        @include tb{
+                            font-size:1.2vw;
+                        }
+                    }
+                }
+                &:nth-child(2){
+                    .btn{
+                        @include btn;
+                        display:inline-block;
+                    }
+                }
+            }
+
+        }/*nav_end*/
+    }/*.wrap_end*/
+}
+
+footer{
+    width:100%;
+    height:auto;
+    background:linear-gradient(90deg, #F4F4F4 0%, #F4F4F4 50%, $main2 50%, $main2 100%);
+    @include sp{
+        background:#F4F4F4;
+        margin:0px auto;
+    }
+    .wrap{
+        @include wrap;
+        @include flex;
+        @include fo_sb;
+        @include fo_vc;
+        @include sp{
+            display:block;
+            margin:0px auto;
+        }
+        height:100%;
+        .left{
+            width:300px;
+            height:180px;
+            background:#F4F4F4;
+            @include flex;
+            @include fo_sa;
+            @include fo_clm;
+            @include sp{
+                width:100%;
+                height:auto;
+                display:block;
+                @include pt(60px);
+                @include pb(60px);
+            }
+            img{
+                width:250px;
+                height:auto;
+                @include sp{
+                    width:60%;
+                    margin:0px auto;
+                }
+            }
+            div{
+                @include flex;
+                @include fo_vc;
+                @include sp{
+                    //background:black;
+                    margin:0px auto;
+                    width:224px;
+                    @include fo_sb;
+                    padding:0;
+                    margin:0px auto;
+                    @include mt(20px);
+                }
+                p{
+                    @include text(12px);
+                    letter-spacing:1px;
+                    font-weight:300;
+                    display:block;
+                    @include sp{
+                        margin:0px auto;
+                    }
+                }
+                img{
+                    display:block;
+                    width:70px;
+                    height:auto;
+                    @include ml(10px);
+                    @include sp{
+                        display:none;
+                    }
+                    
+                }
+            }
+        }
+        .right{
+            width:800px;
+            height:320px;
+            background:$main2;
+            position:relative;
+            @include tb{
+                width:62.8vw;
+            }
+            @include sp{
+                display:none;
+            }
+            nav{
+                height:78px;
+                @include abs(0,0,0,auto);
+                margin:auto;
+                a{
+                    width:140px;
+                    display:inline-block;
+                    margin:left;
+                    font-size:14px;
+                    font-weight:400;
+                    letter-spacing: 0px;
+                    color:white;
+                    border-bottom:1px solid white;
+                    @include ml(50px);
+                    @include pb(4px);
+                    @include tb{
+                        width:12.6vw;
+                        @include ml(2vw);
+                        font-size:1.2vw;
+                    }
+                    &:nth-child(n+5){
+                        @include mt(40px);
+                    }
+                }
+            }
+        }
+    }
+    .under{
+        width:100%;
+        height:70px;
+        background:$main;
+        @include flex;
+        @include fo_sb;
+        .wrap{
+            @include wrap;
+            @include flex;
+            @include fo_sb;
+            @include fo_vc;
+            .link{
+                padding:0;
+                margin:0;
+                a{
+                    font-size:14px;
+                    font-weight:400;
+                    letter-spacing: 0px;
+                    color:white; 
+                    @include mr(20px);
+                    @include sp{
+                        font-size:12px;
+                    }
+                }
+            }
+            p{
+                font-size:14px;  
+                font-weight:400;
+                letter-spacing: 0px;
+                color:white; 
+                @include sp{
+                    font-size:12px;
+                }
+            }
+        }
+    }
+}
+
+#link{
+    @include pt(50px);
+    @include pb(50px);
+    .wrap{
+        @include wrap(840px);
+        @include flex;
+        @include fo_sb;
+        @include tb{
+            @include wrap(100%);
+        }
+        @include sp{
+            @include wrap(90vw);
+            display:block;
+        }
+        .box{
+            width:340px;
+            @include tb{
+                width:38vw;
+            }
+            @include sp{
+                width:100%;
+                @include mt(30px);
+                &:first-of-type{
+                    @include mt(0px);
+                }
+            }
+            &:last-of-type{
+                img{
+                    width:150px;
+                    height:70px;
+                }
+            }
+            div{
+                @include round_box(10px);
+                @include flex;
+                @include fo_sa;
+                @include fo_vc;
+                position:relative;
+                box-shadow:none;
+                -webkit-filter:drop-shadow(0px 0px 10px rgba(0,0,0,0.4));
+                @include mb(30px);//afterで指定した矢印20pxと隙間10pxの合計
+                &:after{
+                    content: "";
+                    @include abs(auto,0,-20px,0);
+                    width: 0px;
+                    height: 0px;
+                    margin: auto;
+                    border-style: solid;
+                    border-color: white transparent transparent transparent;
+                    border-width: 20px 20px 0 20px;
+                    //-webkit-filter:drop-shadow(0px 0px 10px rgba(0,0,0,0.4));
+                    //z-index:-1!important;
+                }
+                img{
+                    width:70px;
+                    height:70px;
+                    object-fit: contain;
+                    padding:4px;
+                    //@include mr(20px);
+                    @include tb{
+                        @include mr(10px);
+                    }
+                    @include sp{
+                        @include mr(10px);
+                    }
+                }
+                p{
+                    @include text(12px);
+                    font-weight:bold;
+                    color:$main;
+                    width:auto;
+                    //background:black;
+                    text-align:left;
+                }
+            }
+            .btn{
+                @include btn;
+            }
+        }
+    }
+}
+
+#sub_main{
+    width:100%;
+    height:280px;
+    background:$main;
+    @include flex;
+    @include fo_vc;
+    @include fo_hc;
+    @include sp{
+        height:200px;
+    }
+    h1{
+        position:relative;
+        top:35px;
+        @include title;
+        color:white;
+        span{
+            color:white;
+        }
+    }
+}/*top_main_end*/
+
+#top_main{
+    width:100%;
+    height:100vh;
+    background:url(../img/top/main.jpg) center;
+    background-size:cover;
+    @include flex;
+    @include fo_vc;
+    h1{
+        width:50%;
+        text-align:center;
+        font-size:2.6vw;
+        line-height:5vw;
+        font-family: 'Noto Sans JP';
+        font-weight:600;
+        text-align:left;
+        @include pl(2%);
+        background:rgba(255,255,255,0.8);
+        box-shadow: 0px 0px 10px rgba(0,0,0,0.4);
+        color:$main;
+        text-shadow: 3px  3px 0px #ffffff,-3px  3px 0px #ffffff,3px -3px 0px #ffffff,-3px -3px 0px #ffffff,3px  0px 0px #ffffff,0px  3px 0px #ffffff,0px -3px 0px #ffffff;
+        @include sp{
+            width:100%;
+            line-height:34px;
+            font-size:18px;
+            @include pt(20px);
+            @include pb(20px);
+        }
+    }
+}/*top_main_end*/
+
+#top_1{
+    @include pt(100px);
+    @include pb(100px);
+    background:$back;
+    .title{
+        @include title;
+    }
+    .wrap{
+        @include wrap;
+        @include mt(50px);
+        ul{
+            @include list;
+        }
+    }
+    .btn{
+        @include btn;
+        @include mt(50px);
+    }
+}/*top_1_end*/
+
+#top_2{
+    @include pt(100px);
+    @include pb(100px);
+    background:white;
+    .title{
+        @include title;
+    }
+    .wrap{
+        @include wrap;
+        @include mt(50px);
+        .box{
+            width:700px;
+            margin:0px auto;
+            @include sp{
+                width:100%;
+            }
+            img{
+                width:100%;
+                height:auto;
+                margin:0px auto;
+            }
+            p{
+                @include text($num:16px);
+                @include mt(30px);
+            }
+        }
+        .ptn{
+            @include mt(50px);
+            border-top:1px solid black;
+            border-bottom:1px solid black;
+            @include pt(20px);
+            @include pr(20px);
+            @include pb(20px);
+            @include pl(20px);
+            @include flex;
+            @include fo_sb;
+            @include sp{
+                width:100%;
+                display:block;
+            }
+            img{
+                width:300px;
+                height:180px;
+                object-fit:contain;
+                @include tb{
+                    width:20vw;
+                    height:auto;
+                }
+                @include sp{
+                    width:60vw;
+                    @include pt(6vw);
+                    @include pb(6vw);
+                    margin:0px auto;
+                }
+            }
+            div{
+                width:auto;
+                @include pl(40px);
+                @include sp{
+                    width:100%;
+                    @include pl(0px);
+                }
+                h3{
+                    @include mt(30px);
+                    @include mb(30px);
+                    font-size:16px;
+                    line-height:20px;
+                    color:rgba(0,0,0,0.6);
+                    font-weight:500;
+                    @include sp{
+                        text-align:center;
+                    }
+                }
+                p{
+                    @include text($num:16px);
+                    @include mt(30px);
+                }
+            }
+        }
+        .btn{
+            @include btn;
+            @include mt(50px);
+        }
+    }/*.wrap_end*/
+}/*top_main_end*/
+
+#top_3{
+    @include pt(100px);
+    @include pb(100px);
+    background:$main;
+    .title{
+        @include title;
+        color:white;
+        span{
+            color:white;
+        }
+    }
+    .add_text{
+        //width:1000px;
+        margin:0px auto;
+        @include mt(50px);
+        @include text($num2:840px);
+        color:white;
+        span{
+            text-align:right!important;
+            display:block;
+            margin:right;
+            @include mt(50px);
+        }
+        @include sp{
+            width:94%;
+        }
+    }
+    .wrap{
+        @include wrap;
+        @include mt(50px);
+        @include flex;
+        @include fo_sb;
+        @include sp{
+            display:block;
+        }
+        .box{
+            width:350px;
+            height:auto;
+            display: flex;
+            flex-direction: column;
+            //background:rgba(0,0,0,0.1);
+            //padding:10px;
+            @include tb{
+                width:28vw;
+            }
+            @include sp{
+                width:100%;
+                @include mb(30px);
+                &:last-of-type{
+                    @include mb(0px);
+                }
+            }
+            h3{
+                @include mt(20px);
+                font-size:16px;
+                line-height:20px;
+                text-align:center;
+                color:white;
+                @include tb{
+                    font-size:1.2vw;
+                }
+                @include sp{
+                    font-size:16px;
+                }
+                span{
+                    display:block;
+                    font-size:12px;
+                    @include mt(6px);
+                }
+            }
+            img{
+                width:100%;
+                height:300px;
+                object-fit:contain;
+                margin:0px auto;
+                background:white;
+                padding:10px;
+                @include tb{
+                    width:100%;
+                    height:24vw;
+                }
+                @include sp{
+                    height:70vw;
+                    max-height:300px;
+                    padding:10px;
+                }
+            }
+            p{
+                @include text;
+                @include mt(20px);
+                color:white;
+                flex-grow: 1;
+            }
+        } 
+    }/*.wrap_end*/
+    .btn{
+        @include btn;
+        background:white;
+        color:$main;
+        margin:0px auto;
+        @include mt(100px);
+    }
+}/*top_main_end*/
+
+#top_4{
+    @include pt(100px);
+    @include pb(100px);
+    background:white;
+    .title{
+        @include title;
+    }
+    p{
+        @include mt(50px);
+        @include msg;
+        //color:rgba(0,0,0,0.6);
+    }
+    .btn{
+        @include btn;
+        @include mt(50px);
+    }
+}
+
+#top_6{
+    @include pt(100px);
+    @include pb(100px);
+    background:$back;
+    .title{
+        @include title;
+    }
+    p{
+        @include text;
+        @include mt(50px);
+        text-align:center;
+    }
+    .btn{
+        @include btn;
+        @include mt(50px);
+    }
+}/*top_6_end*/
+
+/***ここから事例紹介ぺージ**********************************************/
+
+#about_1{
+    @include pt(100px);
+    @include pb(100px);
+    background:white;
+    .title{
+        @include title;
+    }
+    .wrap{
+        @include wrap;
+        @include mt(50px);
+        @include sp{
+            display:block;
+        }
+        h2{
+            @include sub_title;
+            color:rgba(0,0,0,0.8);
+        }
+        h3{
+            @include mt(50px);
+            @include msg;
+            color:$main;
+            span{
+                display:inline-block;
+            }
+        }
+        img{
+            width:900px;
+            height:auto;
+            object-fit:cover;
+            display:block;
+            margin:0px auto;
+            @include mt(50px);
+            @include sp{
+                width:100%;
+                height:auto;
+            }
+        }
+        p{
+            //width:1000px;
+            margin:0px auto;
+            @include mt(50px);
+            @include text($num2:840px);
+            span{
+                text-align:right!important;
+                display:block;
+                margin:right;
+                @include mt(50px);
+            }
+            @include sp{
+                width:100%;
+            }
+        }
+    }/*.wrap_end*/
+}/*about_1_end*/
+
+#about_2{
+    @include pt(100px);
+    @include pb(100px);
+    background:$main;
+    .title{
+        @include title;
+        color:white;
+        span{
+            color:white;
+        }
+    }
+    .wrap{
+        @include wrap;
+        @include mt(50px);
+        .box{
+            width:100%;
+            @include round_box(30px);
+            @include flex;
+            @include fo_sb;
+            @include mt(50px);
+            @include sp{
+                display:block;
+            }
+            img{
+                width:300px;
+                height:300px;
+                object-fit:contain;
+                @include sp{
+                    width:70%;
+                    height:auto;
+                    margin:0px auto;
+                }
+            }
+            div{
+                width:auto;
+                @include pl(40px);
+                @include sp{
+                    width:100%;
+                    @include pl(0px);
+                }
+                h2{
+                    //@include mt(30px);
+                    @include mb(30px);
+                    font-size:20px;
+                    font-weight:400;
+                    span{
+                        //font-size:14px;
+                        display:block;
+                        @include mt(10px);
+                        @include text;
+                        font-weight:400;
+                    }
+                    @include sp{
+                        @include mt(30px);
+                    }
+                }
+                p{
+                    @include text;
+                    @include mt(30px);
+                }
+                .btn{
+                    @include btn(240px);
+                    @include mt(20px);
+                    @include tb{
+                       width:20vw!important;
+                    }
+                    @include sp{
+                       width:220px!important;
+                    }
+                }
+            }
+        }
+    }
+    .wrap2{
+        @include wrap;
+        @include mt(100px);
+        @include sp{
+            display:block;
+        }
+        h2{
+            @include sub_title;
+            color:white;
+            &:before{
+                border-top:2px solid white;
+            }
+        }
+        h3{
+            @include mt(50px);
+            @include msg;
+            color:$main;
+        }
+        span{
+            font-size:12px;
+            display: block;
+            text-align:center;
+            @include mt(10px);
+        }
+        img{
+            width:900px;
+            height:auto;
+            object-fit:cover;
+            display:block;
+            margin:0px auto;
+            @include mt(50px);
+            @include sp{
+                width:100%;
+                height:auto;
+            }
+        }
+        p{
+            //width:1000px;
+            margin:0px auto;
+            @include mt(50px);
+            @include text($num2:840px);
+            color:white;
+            span{
+                text-align:right!important;
+                display:block;
+                margin:right;
+                @include mt(50px);
+            }
+            @include sp{
+                width:100%;
+            }
+        }
+        .box{
+            width:840px;
+            margin:0px auto;
+            //@include round_box(30px);
+            @include flex;
+            @include fo_sb;
+            @include mt(50px);
+            @include sp{
+                width:100%;
+                display:block;
+            }
+            img{
+                width:300px;
+                height:300px;
+                object-fit:contain;
+                background:white;
+                padding:20px;
+                @include sp{
+                    width:60%;
+                    height:auto;
+                    margin:0px auto;
+                }
+            }
+            div{
+                width:auto;
+                @include pl(40px);
+                @include sp{
+                    width:100%;
+                    @include pl(0px);
+                }
+                h3{
+                    //@include mt(30px);
+                    @include mb(30px);
+                    font-size:20px;
+                    font-weight:400;
+                    color:white;
+                    text-align: left;
+                    span{
+                        //font-size:14px;
+                        display:block;
+                        @include mt(10px);
+                        @include text;
+                        font-weight:400;
+                        color:white;
+                        text-align: left;
+                    }
+                    @include sp{
+                        @include mt(30px);
+                    }
+                }
+                p{
+                    @include text;
+                    @include mt(30px);
+                }
+                ul{
+                    @include text;
+                    color:white;
+                    @include mt(30px);
+                }
+            }
+        }/*.box_end*/
+    }/*.wrap_end*/
+}/*about_2_end*/
+
+
+/***ここから事例紹介ぺージ**********************************************/
+
+/***ここからテンプレートパーツ**********************************************/
+
+#tmp_1{
+    @include pt(100px);
+    @include pb(100px);
+    .title{
+        @include title;
+    }
+    .wrap{
+        @include wrap;
+        @include mt(50px);
+        .box{
+            width:100%;
+            @include round_box(20px);
+            @include flex;
+            @include fo_sb;
+            @include mt(50px);
+            background:white;
+            &:first-of-type{
+                @include mt(0px);
+            }
+            @include sp{
+                display:block;
+            }
+            img{
+                width:300px;
+                height:400px;
+                object-fit:cover;
+                @include sp{
+                    width:100%;
+                    height:50vw;
+                }
+            }
+            div{
+                width:auto;
+                @include pl(40px);
+                @include sp{
+                    width:100%;
+                    @include pl(0px);
+                }
+                h3{
+                    @include mt(30px);
+                    @include mb(30px);
+                    font-size:20px;
+                    font-weight:400;
+                }
+                p{
+                    @include text;
+                    @include mt(30px);
+                }
+            }
+        }
+    }
+}/*tmp_1_end*/
+
+#tmp_2{
+    @include pt(100px);
+    @include pb(100px);
+    //background:white;
+    .title{
+        @include title;
+    }
+    .wrap{
+        @include wrap;
+        @include mt(50px);
+        table{
+            border-collapse: collapse;
+            border-spacing: 0;
+            width:100%;
+            height:auto;
+            @include sp{
+            }
+            tr{
+                border-top:1px solid rgba(0,0,0,0.2);
+                &:last-of-type{
+                    border-bottom:1px solid rgba(0,0,0,0.2);
+                }
+                @include sp{
+                    display:block;
+                    width:100%!important;
+                }
+                th{
+                    background:$back;
+                    vertical-align:middle;
+                    text-align:left;
+                    @include pl(20px);
+                    @include text(16px);
+                    @include sp{
+                        display:block;
+                        width:100%!important;
+                        padding:20px;
+                        border-bottom:1px solid rgba(0,0,0,0.2);
+                    }
+                }
+                td{
+                    vertical-align: middle;
+                    padding:20px;
+                    @include text;
+                    background:white;
+                    @include sp{
+                        display:block;
+                        width:100%!important;
+                        
+                    }
+                }
+            }
+        }
+    }
+}/*tmp_2_end*/
+
+#tmp_3{
+    @include pt(100px);
+    @include pb(100px);
+    //@include pb(100px);
+    background:white;
+    .title{
+        @include title;
+    }
+    .wrap{
+        @include wrap;
+        @include mt(50px);
+        @include flex;
+        @include fo_sb;
+        @include fo_t;
+        @include sp{
+            display: block;
+        }
+        &:after{ //要素詰めの設定。これがないと最下段のスペースが均等に割り振られる。
+            display:block;
+            content:"";
+            width:340px;//適当。問題があったら調整
+            height:0;
+            @include tb{
+                width:26vw;
+            }
+            @include sp{
+                display:none;
+            }
+        }
+        .box{
+            width:340px;
+            @include round_box2(20px);
+            background:white!important;
+            display: flex;
+            flex-direction: column;
+            &:nth-of-type(n+4){
+                @include mt(50px);
+                @include sp{
+                    @include mt(0px);
+                }
+            }
+            @include tb{
+                width:26vw;
+            }
+            @include sp{
+                width:100%;
+                display:block;
+                @include mb(30px);
+                &:last-of-type{
+                    @include mb(0px);
+                }
+            }
+            h3{
+                @include mt(20px);
+                font-size:16px;
+                line-height:22px;
+                span{
+                    display:block;
+                    font-size:12px;
+                    @include mt(10px);
+                    z-index:2;
+                    &:before{
+                        content:"◆";
+                        font-size:10px!important;
+                        color:$main2;
+                        @include mr(6px);
+                    }
+                }
+            }
+            img{
+                width:100%;
+                height:auto;
+                object-fit:contain;
+                margin:0px auto;
+                @include tb{
+                    widht:70%;
+                    max-width:560px;
+                }
+            }
+            p{
+                @include text;
+                @include mt(10px);
+                flex-grow: 1;
+            }
+            .btn{
+                @include btn;
+                margin:0px auto;
+                @include mt(30px);
+            }
+        } 
+    }/*.wrap_end*/
+}/*tmp_3_end*/
+
+#news{
+    @include pt(50px);
+    @include pb(100px);
+    background:white;
+    .title{
+        @include title;
+    }
+    .wrap{
+        @include wrap;
+        @include mt(50px);
+        @include sp{
+            display:block;
+        }
+        h3{
+            @include sub_title;
+            color:rgba(0,0,0,0.8);
+            line-height:20px;
+                &:before{
+                    display:none;
+                }
+            span{
+                display:block;
+                font-size:16px;
+                @include mb(10px);
+            }
+        }
+        p{
+            margin:0px auto;
+            @include mt(50px);
+            @include text($num:16px,$num2:840px);
+            span{
+                text-align:right!important;
+                display:block;
+                margin:right;
+                @include mt(50px);
+            }
+            @include sp{
+                width:100%;
+            }
+        }/*p_end*/
+        img{
+            width:700px;
+            height:auto;
+            margin:0px auto;
+            @include mt(50px);
+            @incldue tb{
+                width:50vw;
+            }
+            @include sp{
+                width:100%;
+            }
+        }
+        .btn{
+            @include btn;
+            @include mt(100px);
+        }
+    }/*.wrap_end*/
+}/*news_end*/
+

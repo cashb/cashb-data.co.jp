@@ -1,0 +1,261 @@
+/*all*/
+.gr1{ /*白寄りグレーの背景です。背景として反映したい場合は、項目のsectionタグに付与してください。*/
+    background:#F0F0F0;
+}
+
+.gr2{ /*グレーの背景です（薄い方のグレー）。背景として反映したい場合は、反映したい項目のsectionタグに付与してください。*/
+    background:#8E8E8E;
+}
+
+.gr3{ /*グレーの背景です（濃い方のグレー）。背景として反映したい場合は、反映したい項目のsectionタグに付与してください。*/
+    background:#505050;
+}
+
+/*casestudy*/
+#tmp_3 p {
+    width: 840px;
+    margin: auto;
+    font-size: 16px;
+    font-family: 'Noto Sans JP';
+    font-weight: 300;
+    letter-spacing: 1px;
+    line-height: 1.8;
+    margin-top: 50px;
+    text-align: left;
+}
+
+
+
+@media (max-width: 984px) {
+    #tmp_3 p {
+        width: 90%;
+        margin: auto;
+        font-size: 12px;
+        margin-top: 50px;
+    }
+}
+
+/*about*/
+
+#tmp_1 .wrap .box {
+    padding-top: 40px;
+    padding-right: 40px;
+    padding-bottom: 40px;
+    padding-left: 40px;
+}
+
+@media (max-width: 984px) {
+#tmp_1 .wrap .box {
+    padding-top: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    }
+}
+
+.tmp_1_box_p_head {
+    margin-top:0px !important;
+}
+
+@media (max-width: 984px) {
+.tmp_1_box_p_head {
+    margin-top:30px !important;
+    }
+}
+
+@media (max-width: 984px) {
+#tmp_1 .wrap .box img {
+    width: 50%;
+    height: 60vw;
+    margin: 0 auto;
+    }
+}
+
+
+.signature {
+    font-size: 18px !important;
+    font-weight: 500 !important;
+    margin-top: 50px !important;
+    text-align: right;
+}
+
+@media (max-width: 984px) {
+.signature {
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    text-align: right;
+    }    
+}
+
+#tmp_2 .wrap table tr th {
+    background: #E6E6E6;
+}
+
+/*careers*/
+
+#tmp_2 p {
+    width: 840px;
+    margin: auto;
+    font-size: 16px;
+    font-family: 'Noto Sans JP';
+    font-weight: 300;
+    letter-spacing: 1px;
+    line-height: 1.8;
+    margin-top: 20px;
+    text-align: left;
+}
+
+#tmp_2 .wrap .occupation {
+    display: inline-block;
+    font-size: 14px;
+    color: white;
+    padding: 2px 20px;
+    border-radius: 3px;
+    background: #505050;
+    margin-bottom: 10px;
+}
+
+.careers-ul-text li {
+    margin: 0px auto;
+    margin-left: 30px;
+    margin-top: 20px;
+    font-size: 14px;
+    font-weight: 300;
+    font-family: 'Noto Sans JP';
+    letter-spacing: 1px;
+    line-height: 1.8;
+    list-style: disc;
+}
+
+hr {
+    height: 1px solid;
+    margin-top:40px;
+    margin-bottom: 20px;
+    color: rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 984px) {
+#tmp_2 p {
+        width: 90%;
+        margin: auto;
+        font-size: 12px;
+        margin-top: 0px;
+    }
+
+.careers-ul-text li {
+        font-size: 12px;    
+    }
+}
+
+
+/*privacy*/
+
+#tmp_2 .wrap h2 {
+    font-size: 24px;
+    font-weight: 500;
+    text-align: center;
+    position: relative;
+    padding-bottom: 14px;
+    color: rgba(0, 0, 0, 0.8);
+}
+
+#tmp_2 .wrap h2::before {
+    content: "";
+    width: 100px;
+    height: 2px;
+    position: absolute;
+    top: 34px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    border-top: 2px solid rgba(0, 0, 0, 0.2);
+}
+
+#tmp_2 .privacy-day {
+    text-align: right;
+    margin-top: 50px;
+}
+
+
+#tmp_2 .privacy-heading-1 p {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+#tmp_2 .privacy-heading-2 p {
+    font-size: 20px;
+    font-weight: 400;
+    margin-top:20px;
+}
+
+#tmp_2 .privacy-normal-text p {
+    font-size:16px;
+    font-weight: 300;
+    margin-top: 20px;
+}
+
+#tmp_2 .privacy-ol li {
+    list-style-type: decimal;
+    width:720px;
+    margin: 0 auto;
+    font-size:16px;
+    font-weight: 300;
+    margin-top: 20px;
+    line-height: 1.8;
+}
+
+#tmp_2 .privacy-ol .privacy-ol-lower-roman li {
+    list-style-type: lower-roman;
+    width:660px;
+    margin: 0 auto;
+    font-size:16px;
+    font-weight: 300;
+    margin-top: 0px;
+    line-height: 1.8;
+}
+
+#tmp_2 .privacy-ul li {
+    list-style-type: disc;
+    width:620px;
+    margin: 0 auto;
+    font-size:16px;
+    font-weight: 300;
+    line-height: 1.8;
+}
+
+
+@media (max-width: 984px) {  
+    
+#tmp_2 .wrap h2 {
+    font-size: 20px;
+}
+
+#tmp_2 .privacy-heading-1 p {
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+#tmp_2 .privacy-heading-2 p {
+    font-size: 16px;
+}
+
+#tmp_2 .privacy-normal-text p {
+    font-size:12px;
+} 
+
+#tmp_2 .privacy-ol li {
+    width:85%;
+    font-size:12px;
+}
+
+#tmp_2 .privacy-ol .privacy-ol-lower-roman li {
+    width:90%;
+    font-size:12px;
+}
+
+#tmp_2 .privacy-ul li {
+    width:90%;
+    font-size:12px;
+}
+}
