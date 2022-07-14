@@ -26,7 +26,7 @@ try {
     $mail->Host       = 'cashb-data.sakura.ne.jp';              //Set the SMTP server to send through
     $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
     $mail->Username   = 'support@cashb-data.co.jp';                     //SMTP username
-    $mail->Password   = 'cbd0811!!';                               //SMTP password
+    $mail->Password   = 'cbd_20220704*';                               //SMTP password
     $mail->SMTPSecure = tls;            //Enable implicit TLS encryption
     $mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
