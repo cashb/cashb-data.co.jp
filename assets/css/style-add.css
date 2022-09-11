@@ -11,6 +11,15 @@
     background:#505050;
 }
 
+.gr4{ /*白の背景です。背景として反映したい場合は、項目のsectionタグに付与してください。*/
+    background:#ffffff;    
+}
+
+.gr5{ /*水色の背景です。背景として反映したい場合は、項目のsectionタグに付与してください。*/
+    background:#81d3ed;
+}
+
+
 /*casestudy*/
 #tmp_3 p {
     width: 840px;

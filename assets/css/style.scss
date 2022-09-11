@@ -50,8 +50,8 @@ $pc: 1181px;
 $tb: 1180px;
 $sp: 984px;
 //$main:#414881;
-$main:#353535;
-$main2:#8E8E8E;
+$main:#81d3ed; //#81d3ed
+$main2:#353535; //#8E8E8E
 $back:#FAFAFA;
 $gray:#717171;
 //$filter:rgba(50,35,111,0.44);
@@ -211,7 +211,7 @@ flex-wrap: wrap;
     width:$num2;
     letter-spacing:2px;
     @include lh(2);
-    color:$main;
+    color:$main2;
     @include tb{
         font-size:1.2vw;
     }
@@ -226,7 +226,7 @@ flex-wrap: wrap;
     font-family: 'Arial';
     font-weight:800;
     text-align:center;
-    color:$main;
+    color:$main2;
     @include tb{
         font-size:3vw;
     }
@@ -321,7 +321,7 @@ flex-wrap: wrap;
                 display:block;
             }
             span{
-                color:rgba(0,0,0,0.6);
+                color:#353535; //rgba(0,0,0,0.6);
                 //@include pr(40px);
                 font-size:16px;
                 line-height:26px!important;
@@ -364,7 +364,7 @@ flex-wrap: wrap;
     border-radius: 30px;
     font-size:14px;
     text-align:center;
-    background-image: linear-gradient(to left, white 50%, $main 50%);
+    background-image: linear-gradient(to left, white 50%, $main2 50%);
     background-position: 0 0;
     background-size: 200% auto;
     transition: .4s!important;
@@ -833,7 +833,7 @@ header{
 footer{
     width:100%;
     height:auto;
-    background:linear-gradient(90deg, #F4F4F4 0%, #F4F4F4 50%, $main2 50%, $main2 100%);
+    background:linear-gradient(90deg, white 0%, white 50%, $main 50%, $main 100%);
     @include sp{
         background:#F4F4F4;
         margin:0px auto;
@@ -851,7 +851,7 @@ footer{
         .left{
             width:300px;
             height:180px;
-            background:#F4F4F4;
+            background:white;
             @include flex;
             @include fo_sa;
             @include fo_clm;
@@ -906,7 +906,7 @@ footer{
         .right{
             width:800px;
             height:320px;
-            background:$main2;
+            background:$main;
             position:relative;
             @include tb{
                 width:62.8vw;
@@ -925,8 +925,8 @@ footer{
                     font-size:14px;
                     font-weight:400;
                     letter-spacing: 0px;
-                    color:white;
-                    border-bottom:1px solid white;
+                    color: #353535;
+                    border-bottom:1px solid #353535;
                     @include ml(50px);
                     @include pb(4px);
                     @include tb{
@@ -944,7 +944,7 @@ footer{
     .under{
         width:100%;
         height:70px;
-        background:$main;
+        background:#50c1e4;
         @include flex;
         @include fo_sb;
         .wrap{
@@ -959,7 +959,7 @@ footer{
                     font-size:14px;
                     font-weight:400;
                     letter-spacing: 0px;
-                    color:white; 
+                    color:#353535; 
                     @include mr(20px);
                     @include sp{
                         font-size:12px;
@@ -970,7 +970,7 @@ footer{
                 font-size:14px;  
                 font-weight:400;
                 letter-spacing: 0px;
-                color:white; 
+                color:#353535; 
                 @include sp{
                     font-size:12px;
                 }
@@ -1075,9 +1075,9 @@ footer{
         position:relative;
         top:35px;
         @include title;
-        color:white;
+        color:#353535;
         span{
-            color:white;
+            color:#353535;
         }
     }
 }/*top_main_end*/
@@ -1100,7 +1100,7 @@ footer{
         @include pl(2%);
         background:rgba(255,255,255,0.8);
         box-shadow: 0px 0px 10px rgba(0,0,0,0.4);
-        color:$main;
+        color:$main2;
         text-shadow: 3px  3px 0px #ffffff,-3px  3px 0px #ffffff,3px -3px 0px #ffffff,-3px -3px 0px #ffffff,3px  0px 0px #ffffff,0px  3px 0px #ffffff,0px -3px 0px #ffffff;
         @include sp{
             width:100%;
@@ -1115,7 +1115,7 @@ footer{
 #top_1{
     @include pt(100px);
     @include pb(100px);
-    background:$back;
+    background:#81d3ed;
     .title{
         @include title;
     }
@@ -1224,9 +1224,9 @@ footer{
     background:$main;
     .title{
         @include title;
-        color:white;
+        color: #353535;
         span{
-            color:white;
+            color: #353535; 
         }
     }
     .add_text{
@@ -1234,7 +1234,7 @@ footer{
         margin:0px auto;
         @include mt(50px);
         @include text($num2:840px);
-        color:white;
+        color:#353535;
         span{
             text-align:right!important;
             display:block;
@@ -1247,6 +1247,7 @@ footer{
     }
     .wrap{
         @include wrap;
+        gap: 20px;
         @include mt(50px);
         @include flex;
         @include fo_sb;
@@ -1275,7 +1276,7 @@ footer{
                 font-size:16px;
                 line-height:20px;
                 text-align:center;
-                color:white;
+                color:#353535;
                 @include tb{
                     font-size:1.2vw;
                 }
@@ -1308,15 +1309,15 @@ footer{
             p{
                 @include text;
                 @include mt(20px);
-                color:white;
+                color:#353535;
                 flex-grow: 1;
             }
         } 
     }/*.wrap_end*/
     .btn{
         @include btn;
-        background:white;
-        color:$main;
+        background:#353535;
+        color:white;
         margin:0px auto;
         @include mt(100px);
     }
@@ -1332,6 +1333,7 @@ footer{
     p{
         @include mt(50px);
         @include msg;
+        color:#353535
         //color:rgba(0,0,0,0.6);
     }
     .btn{
@@ -1343,7 +1345,7 @@ footer{
 #top_6{
     @include pt(100px);
     @include pb(100px);
-    background:$back;
+    background:white;
     .title{
         @include title;
     }
@@ -1363,7 +1365,7 @@ footer{
 #about_1{
     @include pt(100px);
     @include pb(100px);
-    background:white;
+    background: white;
     .title{
         @include title;
     }
@@ -1380,7 +1382,7 @@ footer{
         h3{
             @include mt(50px);
             @include msg;
-            color:$main;
+            color:$main2;
             span{
                 display:inline-block;
             }
@@ -1421,9 +1423,9 @@ footer{
     background:$main;
     .title{
         @include title;
-        color:white;
+        color:#353535;
         span{
-            color:white;
+            color:#353535;
         }
     }
     .wrap{
@@ -1496,9 +1498,9 @@ footer{
         }
         h2{
             @include sub_title;
-            color:white;
+            color:#353535;
             &:before{
-                border-top:2px solid white;
+                border-top:2px solid #cccccc;
             }
         }
         h3{
@@ -1529,7 +1531,7 @@ footer{
             margin:0px auto;
             @include mt(50px);
             @include text($num2:840px);
-            color:white;
+            color:#353535;
             span{
                 text-align:right!important;
                 display:block;
@@ -1575,7 +1577,7 @@ footer{
                     @include mb(30px);
                     font-size:20px;
                     font-weight:400;
-                    color:white;
+                    color:#353535;
                     text-align: left;
                     span{
                         //font-size:14px;
@@ -1583,7 +1585,7 @@ footer{
                         @include mt(10px);
                         @include text;
                         font-weight:400;
-                        color:white;
+                        color:#353535;
                         text-align: left;
                     }
                     @include sp{
@@ -1596,7 +1598,7 @@ footer{
                 }
                 ul{
                     @include text;
-                    color:white;
+                    color:#353535;
                     @include mt(30px);
                 }
             }
@@ -1865,6 +1867,9 @@ footer{
         .btn{
             @include btn;
             @include mt(100px);
+        }
+        ul{
+            @include list;
         }
     }/*.wrap_end*/
 }/*news_end*/
