@@ -242,7 +242,7 @@ p {
   .btn {
     margin: 0 auto;
     font-size: 14px;
-    width: 200px;
+    width: 286px;
   }
   .btn .sp {
     display: inline-block;
@@ -253,11 +253,32 @@ p {
 }
 
 .btn_box {
+  display: flex;
+  justify-content: center;
   margin-top: 90px;
+}
+
+.btn_box > .btn:not(:first-child) {
+  margin-left: 45px;
+}
+
+.btn_box > .btn:only-child {
+  margin: auto;
+}
+
+@media (max-width: 984px) {
+  .btn_box + .btn_box {
+    margin-top: 20px;
+  }
+
+  .btn_box > .btn:only-child {
+    margin: 0;
+  }
 }
 
 @media screen and (max-width: 768px) {
   .btn_box {
+    flex-direction: column;
     margin-top: 20px;
   }
   .btn_box .sp {
@@ -266,6 +287,13 @@ p {
   .btn_box .pc {
     display: none;
   }
+  .btn_box > .btn:only-child {
+    margin: auto;
+  }
+  .btn_box > .btn:not(:first-child) {
+    margin-left: auto;
+    margin-top: 20px;
+  }
 }
 
 .btn_box_consulting {
@@ -273,7 +301,6 @@ p {
 }
 
 .btn_inquiry {
-  margin-right: 45px;
   background-color: #2f2f2f;
   color: #fff;
   background-image: linear-gradient(to left, white 50%, #353535 50%);
